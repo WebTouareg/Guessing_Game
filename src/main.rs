@@ -30,8 +30,10 @@ fn main() {
     let mut guess = String::new();
 
     io::stdin()
-        .read_line(&mut guess)
-        .expect("Failed to read line");
+        .read_line(&mut guess) // Read the user input
+        .expect("Failed to read line"); // Handle the error
 
-    println!("You guessed: {guess}");
+    println!("You guessed: {guess}"); // Print the user input
 }
+
+// just a bulkd try
