@@ -1,39 +1,26 @@
+use std::cmp::Ordering;
 use std::io;
 
-/*************  ✨ Command ⭐  *************/
-/// This is the main function of the program. It will print a message asking the
-/// userfor a guess, read that guess from the standard input, and then print out
-///  the guess it received.
+use rand::{random_range};
 
-// Old method for arguments before using the macro format_args! in 2022 release
-// println!("You guessed: {guess}"); vs println!("You guessed: {}", guess);
-
-//fn main () {
-//    println!("Guess the number");
-//
-//    println!("Please input your guess.");
-//
-//    let mut guess = String::new();
-//
-//    io::stdin()
-//        .read_line(&mut guess)
-//        .expect("Failed to read line");
-//
-//    println!("You guessed: {}", guess);
-//}
+/***********  ✨ GUESSING GAME ⭐  *************/
 
 fn main() {
-    println!("Guess the number!");
-
-    println!("Please input your guess.");
+    // --snip--
 
     let mut guess = String::new();
 
     io::stdin()
-        .read_line(&mut guess) // Read the user input
-        .expect("Failed to read line"); // Handle the error
+        .read_line(&mut guess)
+        .expect("Failed to read line");
 
-    println!("You guessed: {guess}"); // Print the user input
+    let guess: u32 = guess.trim().parse().expect("Please type a number!");
+
+    println!("You guessed: {guess}");
+
+    match guess.cmp(&secret_number) {
+        Ordering::Less => println!("Too small!"),
+        Ordering::Greater => println!("Too big!"),
+        Ordering::Equal => println!("You win!"),
+    }
 }
-
-// just a bulkd try
